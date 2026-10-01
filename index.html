@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Rishuu 💗</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #fff7fb, #ffe8f2, #eef7ff);
+      color: #4d3540;
+      overflow-x: hidden;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 20px;
+      opacity: 0.45;
+      animation: floatUp 7s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      width: min(92%, 850px);
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 80px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero {
+      min-height: 100vh;
+    }
+
+    .small-text {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b56d8a;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 10vw, 78px);
+      line-height: 1;
+      color: #d95786;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 7vw, 50px);
+      color: #cf6287;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      color: #bd5b7e;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 650px;
+    }
+
+    .subtitle {
+      font-size: 19px;
+      color: #745361;
+      margin-bottom: 30px;
+    }
+
+    button {
+      border: none;
+      padding: 14px 24px;
+      border-radius: 30px;
+      background: #df7099;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 8px 20px rgba(190, 80, 120, 0.18);
+      margin: 8px;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.02);
+      background: #c85d85;
+    }
+
+    .secondary-btn {
+      background: white;
+      color: #c65f83;
+      border: 2px solid #f0b5ca;
+    }
+
+    .card-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.82);
+      padding: 25px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(150, 90, 110, 0.12);
+      border: 1px solid rgba(240,180,205,0.5);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .hidden-message {
+      display: none;
+      margin-top: 15px;
+      color: #7b5061;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .guilty-card {
+      background: white;
+      border-radius: 22px;
+      padding: 22px;
+      text-align: left;
+      border-left: 5px solid #df7099;
+      box-shadow: 0 8px 25px rgba(150, 90, 110, 0.1);
+    }
+
+    .guilty-card span {
+      display: block;
+      font-size: 13px;
+      color: #a16d80;
+      margin-top: 8px;
+    }
+
+    .report-card {
+      width: min(100%, 600px);
+      background: white;
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 12px 35px rgba(140, 80, 110, 0.15);
+    }
+
+    .report-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid #f2dbe4;
+      text-align: left;
+    }
+
+    .report-row:last-child {
+      border-bottom: none;
+    }
+
+    .status {
+      font-weight: bold;
+      color: #cc6387;
+      white-space: nowrap;
+    }
+
+    .choice-area {
+      margin-top: 30px;
+      min-height: 100px;
+    }
+
+    .timeline {
+      width: min(100%, 650px);
+      margin-top: 30px;
+    }
+
+    .timeline-item {
+      background: rgba(255,255,255,0.85);
+      margin: 15px 0;
+      padding: 22px;
+      border-radius: 22px;
+      text-align: left;
+      box-shadow: 0 7px 20px rgba(150,90,110,0.08);
+    }
+
+    .date {
+      font-size: 13px;
+      color: #c15d82;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .secret-box {
+      background: linear-gradient(135deg, #fff, #fff0f6);
+      border: 2px dashed #e59ab6;
+      border-radius: 28px;
+      padding: 30px;
+      max-width: 650px;
+    }
+
+    .final-box {
+      background: rgba(255,255,255,0.82);
+      padding: 35px 25px;
+      border-radius: 30px;
+      box-shadow: 0 12px 35px rgba(140,80,110,0.12);
+    }
+
+    .big-heart {
+      font-size: 65px;
+      margin: 15px;
+      animation: heartbeat 1.4s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.12);
+      }
+    }
+
+    .signature {
+      margin-top: 25px;
+      color: #c75d82;
+      font-weight: bold;
+      font-size: 19px;
+    }
+
+    .scroll-note {
+      margin-top: 35px;
+      font-size: 13px;
+      color: #9d7181;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #9d7181;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 65px 5px;
+      }
+
+      .report-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .status {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating hearts -->
+  <div class="floating-heart" style="left:10%; animation-delay:0s;">♡</div>
+  <div class="floating-heart" style="left:25%; animation-delay:2s;">♥</div>
+  <div class="floating-heart" style="left:45%; animation-delay:4s;">♡</div>
+  <div class="floating-heart" style="left:70%; animation-delay:1s;">♥</div>
+  <div class="floating-heart" style="left:88%; animation-delay:3s;">♡</div>
+
+  <div class="container">
+
+    <!-- 1. OPENING -->
+    <section class="hero">
+      <div class="small-text">A little something for you</div>
+
+      <h1>Hey Rishuu 💗</h1>
+
+      <p class="subtitle">
+        I made this little thing for you, so please take a few minutes and go through it properly. 🥺
+      </p>
+
+      <button onclick="scrollToSection('welcome')">
+        Come here 👀
+      </button>
+
+      <div class="scroll-note">
+        Yes, you have to click it. No skipping. 🤨
+      </div>
+    </section>
+
+
+    <!-- 2. WELCOME -->
+    <section id="welcome">
+      <div class="small-text">Page 01</div>
+
+      <h2>Welcome, Rishuu 🫶🏻</h2>
+
+      <p>
+        You really thought you were getting away without a little Boyfriend Day surprise?
+        Nope. Not happening. 😭
+      </p>
+
+      <p style="margin-top:15px;">
+        So here you are, stuck on a website made specifically for you.
+        Please appreciate the effort before you start making fun of me. 🤨💗
+      </p>
+
+      <button onclick="scrollToSection('reasons')">
+        Okay, keep going →
+      </button>
+    </section>
+
+
+    <!-- 3. REASONS -->
+    <section id="reasons">
+      <div class="small-text">Page 02</div>
+
+      <h2>A few reasons I like you 💗</h2>
+
+      <p>
+        I could write a hundred things, but then this website would become unnecessarily long.
+        So here are some of my favourites.
+      </p>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>You make me laugh 😭</h3>
+          <button class="secondary-btn" onclick="reveal('reason1')">
+            Click
+          </button>
+          <p id="reason1" class="hidden-message">
+            Even when I am not in the mood, you somehow manage to make me smile.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>You tolerate my nakhre 🤏🏻</h3>
+          <button class="secondary-btn" onclick="reveal('reason2')">
+            Click
+          </button>
+          <p id="reason2" class="hidden-message">
+            Honestly, that deserves some appreciation because I know I can be a lot. 😭
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>You are my favourite person 🫶🏻</h3>
+          <button class="secondary-btn" onclick="reveal('reason3')">
+            Click
+          </button>
+          <p id="reason3" class="hidden-message">
+            Somehow you became the person I want to tell everything to.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>You make ordinary days better ☁️</h3>
+          <button class="secondary-btn" onclick="reveal('reason4')">
+            Click
+          </button>
+          <p id="reason4" class="hidden-message">
+            Even the smallest conversations with you can make my day a little better.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>You are impossible to replace 💗</h3>
+          <button class="secondary-btn" onclick="reveal('reason5')">
+            Click
+          </button>
+          <p id="reason5" class="hidden-message">
+            Unfortunately for you, you are stuck with me now. 😭
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>You are just... you 🥺</h3>
+          <button class="secondary-btn" onclick="reveal('reason6')">
+            Click
+          </button>
+          <p id="reason6" class="hidden-message">
+            And I think that is my favourite thing about you.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 4. GUILTY -->
+    <section id="guilty">
+      <div class="small-text">Page 03</div>
+
+      <h2>Things Rishuu is guilty of 🚨</h2>
+
+      <p>
+        After a very serious investigation, I have collected some evidence.
+      </p>
+
+      <div class="card-grid">
+
+        <div class="guilty-card">
+          <strong>Making me wait for replies 📱</strong>
+          <span>Evidence: unfortunately, there is plenty.</span>
+        </div>
+
+        <div class="guilty-card">
+          <strong>Saying “chal hatt” and then coming back 😭</strong>
+          <span>Very suspicious behaviour.</span>
+        </div>
+
+        <div class="guilty-card">
+          <strong>Annoying me for absolutely no reason</strong>
+          <span>And somehow still getting away with it.</span>
+        </div>
+
+        <div class="guilty-card">
+          <strong>Making me smile when I am trying to stay annoyed</strong>
+          <span>This one is particularly unfair.</span>
+        </div>
+
+        <div class="guilty-card">
+          <strong>Being cute when you should be apologising</strong>
+          <span>Extremely suspicious technique.</span>
+        </div>
+
+        <div class="guilty-card">
+          <strong>Stealing way too much of my attention</strong>
+          <span>And I am not even asking for it back.</span>
+        </div>
+
+      </div>
+
+      <button onclick="scrollToSection('report')">
+        See your official report →
+      </button>
+    </section>
+
+
+    <!-- 5. REPORT CARD -->
+    <section id="report">
+      <div class="small-text">Page 04</div>
+
+      <h2>Rishuu's Boyfriend Report Card 📝</h2>
+
+      <div class="report-card">
+
+        <div class="report-row">
+          <span>Making me laugh</span>
+          <span class="status">PASSED ✅</span>
+        </div>
+
+        <div class="report-row">
+          <span>Handling my nakhre</span>
+          <span class="status">STILL IN TRAINING 😭</span>
+        </div>
+
+        <div class="report-row">
+          <span>Replying on time</span>
+          <span class="status">UNDER INVESTIGATION 🚨</span>
+        </div>
+
+        <div class="report-row">
+          <span>Being cute</span>
+          <span class="status">CONFIRMED 💗</span>
+        </div>
+
+        <div class="report-row">
+          <span>Annoying me</span>
+          <span class="status">EXPERT LEVEL</span>
+        </div>
+
+        <div class="report-row">
+          <span>Making me smile</span>
+          <span class="status">ALWAYS WORKING</span>
+        </div>
+
+        <div class="report-row">
+          <span>Being my Rishuu</span>
+          <span class="status">PERMANENT POSITION 🫶🏻</span>
+        </div>
+
+      </div>
+
+      <button onclick="scrollToSection('choose')">
+        Continue →
+      </button>
+    </section>
+
+
+    <!-- 6. CHOOSE YOUR RISHUU -->
+    <section id="choose">
+      <div class="small-text">Page 05</div>
+
+      <h2>Choose your Rishuu 🎮</h2>
+
+      <p>
+        There are many versions of you. Unfortunately, I know all of them. 😭
+      </p>
+
+      <div style="margin-top:20px;">
+        <button onclick="chooseRishuu('cute')">Cute Rishuu 🥺</button>
+        <button onclick="chooseRishuu('annoying')">Annoying Rishuu 😭</button>
+        <button onclick="chooseRishuu('sleepy')">Sleepy Rishuu 💤</button>
+        <button onclick="chooseRishuu('gaming')">Gaming Rishuu 🎮</button>
+      </div>
+
+      <div id="choiceArea" class="choice-area"></div>
+
+      <button onclick="scrollToSection('timeline')">
+        Continue →
+      </button>
+    </section>
+
+
+    <!-- 7. TIMELINE -->
+    <section id="timeline">
+      <div class="small-text">Page 06</div>
+
+      <h2>A few little moments 🫶🏻</h2>
+
+      <p>
+        Not everything has to be a huge moment to become a favourite memory.
+      </p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="date">26 DECEMBER 2025 💗</div>
+          <p>
+            The day our little story officially began.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="date">THE RANDOM DAYS</div>
+          <p>
+            The calls, the conversations, the teasing, the tiny arguments,
+            the random updates and all the little things in between.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="date">THE DAYS I NEEDED YOU</div>
+          <p>
+            The moments when simply having you around made things feel a little easier.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="date">AND EVERYTHING STILL TO COME</div>
+          <p>
+            Because this little timeline is definitely not finished yet. 🤍
+          </p>
+        </div>
+
+      </div>
+
+      <button onclick="scrollToSection('unsaid')">
+        One more thing →
+      </button>
+    </section>
+
+
+    <!-- 8. THINGS I DON'T SAY ENOUGH -->
+    <section id="unsaid">
+      <div class="small-text">Page 07</div>
+
+      <h2>Things I don't say enough 🥺</h2>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>Thank you.</h3>
+          <p>
+            For being there in all the little ways that sometimes go unnoticed.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>I appreciate you.</h3>
+          <p>
+            More than I probably manage to say properly.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>You matter to me.</h3>
+          <p>
+            A lot. Even on the days when I am busy being annoying. 😭
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>I am glad it is you.</h3>
+          <p>
+            Out of all the people in the world, somehow it became you.
+            And I am really happy about that.
+          </p>
+        </div>
+
+      </div>
+
+      <button onclick="scrollToSection('secret')">
+        I found something... 👀
+      </button>
+    </section>
+
+
+    <!-- 9. SECRET -->
+    <section id="secret">
+      <div class="small-text">Page 08</div>
+
+      <div class="secret-box">
+
+        <h2>DO NOT CLICK THIS 👀</h2>
+
+        <p>
+          Seriously. There is absolutely nothing interesting here.
+        </p>
+
+        <button onclick="secretOne()">
+          I will click it anyway
+        </button>
+
+        <div id="secretMessage" class="hidden-message">
+
+          <p>
+            I knew you would click it. 😭
+          </p>
+
+          <button onclick="secretTwo()">
+            Okay, one more...
+          </button>
+
+          <div id="secretFinal" class="hidden-message">
+            <p>
+              Fine. You win. You are officially allowed to keep reading. 💗
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <button onclick="scrollToSection('letter')">
+        Continue →
+      </button>
+    </section>
+
+
+    <!-- 10. LETTER -->
+    <section id="letter">
+      <div class="small-text">Page 09</div>
+
+      <div class="final-box">
+
+        <h2>For you, Rishuu 💗</h2>
+
+        <p>
+          Happy Boyfriend Day to the person who somehow became such a big part
+          of my little everyday world.
+        </p>
+
+        <p style="margin-top:18px;">
+          Thank you for all the laughs, all the random conversations,
+          all the silly moments, and even all the times you manage to annoy me
+          beyond explanation. 😭
+        </p>
+
+        <p style="margin-top:18px;">
+          I hope you always know that you are loved, appreciated,
+          and very, very special to me.
+        </p>
+
+        <p style="margin-top:18px;">
+          I may not say everything perfectly all the time,
+          but I hope this little website makes one thing very clear:
+          I am really happy that I have you.
+        </p>
+
+        <p style="margin-top:18px;">
+          Please keep being you, keep making me laugh,
+          and keep being the person I can share my random little thoughts with.
+        </p>
+
+        <div class="signature">
+          Happy Boyfriend Day, Rishuu. 🥺💗
+        </div>
+
+      </div>
+
+      <button onclick="scrollToSection('final')">
+        There is one last thing...
+      </button>
+    </section>
+
+
+    <!-- 11. FINAL -->
+    <section id="final">
+
+      <div class="big-heart">💗</div>
+
+      <div class="small-text">THE END</div>
+
+      <h1>Happy Boyfriend Day, Rishuu!</h1>
+
+      <p class="subtitle">
+        You are officially stuck with me.  
+        Sorry, no refunds. 😭
+      </p>
+
+      <p>
+        Now stop smiling at the screen and go call your girlfriend. 🤨
+      </p>
+
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        Replay from the beginning ↻
+      </button>
+
+    </section>
+
+  </div>
+
+  <footer>
+    Made with way too much time, too many thoughts, and a little bit of love. 💗
+  </footer>
+
+
+  <script>
+
+    function reveal(id) {
+      const element = document.getElementById(id);
+      element.classList.toggle("show");
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function chooseRishuu(type) {
+
+      const area = document.getElementById("choiceArea");
+
+      const messages = {
+
+        cute:
+          "Cute Rishuu detected. Please stop being this cute because I am trying to pretend I am annoyed with you. 🥺💗",
+
+        annoying:
+          "Annoying Rishuu detected. Unfortunately, I already know how to deal with you. Mostly. 😭",
+
+        sleepy:
+          "Sleepy Rishuu detected. Go sleep before you start replying with three business days between each message. 💤",
+
+        gaming:
+          "Gaming Rishuu detected. I will patiently wait for you to finish, but I am absolutely keeping track of the time. 👀🎮"
+
+      };
+
+      area.innerHTML = `
+        <div class="card">
+          <h3>Oh, so this is the version you chose? 😭</h3>
+          <p>${messages[type]}</p>
+        </div>
+      `;
+    }
+
+    function secretOne() {
+      document.getElementById("secretMessage").classList.add("show");
+    }
+
+    function secretTwo() {
+      document.getElementById("secretFinal").classList.add("show");
+    }
+
+  </script>
+
+</body>
+</html>
